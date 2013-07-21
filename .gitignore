@@ -32,8 +32,8 @@
 *.vrb
 *.xdy
 *.tdo
-*.sublime-project~
+*.sublime-project
 *.sublime-workspace
-*.sublime-workspace~
 *.run.xml
 *-blx.bib
+*~
