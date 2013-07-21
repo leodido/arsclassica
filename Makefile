@@ -1,4 +1,10 @@
-pdf:	
+frontispiece:
+	pandoc --help
+
+thesis:	
+	pandoc --help
+
+index:
 	pandoc --help
 
 clean:	

@@ -4,18 +4,18 @@
 %*********************************************************************************
 % Comandi personali
 %*********************************************************************************
-\newcommand{\myName}{Leonardo~Di~Donato}% author
-\newcommand{\myTitle}{Continuos Time Bayesian Networks Classifiers}% title
-\newcommand{\myDegree}{Tesi di Laurea}% tipo di tesi
-\newcommand{\myUni}{Università degli Studi di Milano--Bicocca}% university
-\newcommand{\myFaculty}{Facoltà di Scienze Matematiche, Fisiche e Naturali}% facoltà
-\newcommand{\myDepartment}{Dipartimento di Informatica, Sistemistica e Comunicazione}% dipartimento
-\newcommand{\myProf}{Prof.~F.~Antonio~Stella}% relatore
-\newcommand{\myOtherProf}{Dott.~Daniele~Codecasa}% correlatore
-\newcommand{\myLocation}{Milano}% dove
-\newcommand{\myTime}{Settembre 2013}% quando
-\newcommand{\mySubject}{Continuos time Bayesian Networks}
-\newcommand{\myKeywords}{Classification, Continuos time Bayesian Network, CTBN, Continuos time Bayesian Newtork Classifier, CTBNC}
+\newcommand{\myname}{Leonardo~Di~Donato}
+\newcommand{\mytitle}{Continuos Time Bayesian Networks Classifiers}
+\newcommand{\mydegree}{Tesi di Laurea}
+\newcommand{\myuni}{Università degli Studi di Milano--Bicocca}
+\newcommand{\myfaculty}{Facoltà di Scienze Matematiche, Fisiche e Naturali}
+\newcommand{\mydepartment}{Dipartimento di Informatica, Sistemistica e Comunicazione}
+\newcommand{\myprof}{Prof.~F.~Antonio~Stella}
+\newcommand{\myocorrelator}{Dott.~Daniele~Codecasa}
+\newcommand{\mylocation}{Milano}
+\newcommand{\mytime}{Settembre 2013}
+\newcommand{\mysubject}{Continuos time Bayesian Networks}
+\newcommand{\mykeywords}{Classification, Continuos time Bayesian Network, CTBN, Continuos time Bayesian Newtork Classifier, CTBNC}
 
 %*********************************************************************************
 % TOC settings
@@ -244,14 +244,6 @@
     escapeinside={<ls>}{<le>}
 }
 
-% Dichiarazioni utili per l'indice della tesi e le etichette
-\addto\captionsitalian{%
-\renewcommand{\lstlistingname}{Algoritmo}}
-\addto\captionsitalian{%
-\renewcommand{\lstlistlistingname}{Elenco degli algoritmi}}
-\providecommand*{\lstlistingautorefname}{algoritmo}
-\providecommand*{\lstnumberautorefname}{linea}
-
 %*********************************************************************************
 % Impostazioni di hyperref
 %*********************************************************************************
@@ -266,10 +258,10 @@
     hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
     urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
     urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
-    pdftitle={\myTitle},%
-    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
-    pdfsubject={\mySubject},%
-    pdfkeywords={\myKeywords},%
+    pdftitle={\mytitle},%
+    pdfauthor={\textcopyright\ \myname, \myuni, \myfaculty},%
+    pdfsubject={\mysubject},%
+    pdfkeywords={\mykeywords},%
     pdfcreator={pdfLaTeX},%
     pdfproducer={LaTeX with hyperref, classicthesis and arsclassica}%
 }
@@ -280,14 +272,14 @@
 \graphicspath{{images/}} % cartella dove sono riposte le immagini
 
 %*********************************************************************************
-% Margini ottimizzati per l'A4
+% A4 optimized margins
 %*********************************************************************************
 \areaset[current]{336pt}{750pt}
 \setlength{\marginparwidth}{7em}
 \setlength{\marginparsep}{2em}%
 
 %*********************************************************************************
-% Utility
+% Utilities
 %*********************************************************************************
 % make first letter uppercase
 \makeatletter
@@ -319,6 +311,14 @@
 \addto\extrasitalian{%
   \def\subsubsectionautorefname{sottosezione}%
 }
+\addto\captionsitalian{%
+    \renewcommand{\lstlistingname}{Algoritmo}%
+}
+\addto\captionsitalian{%
+    \renewcommand{\lstlistlistingname}{Elenco degli algoritmi}%
+}
+\providecommand*{\lstlistingautorefname}{algoritmo}
+\providecommand*{\lstnumberautorefname}{linea}
 
 %*********************************************************************************
 % Custom references for \autoref
@@ -337,74 +337,18 @@
 \crefformat{footnote}{#2\footnotemark[#1]#3}
 
 %*********************************************************************************
-% Altro
+% Define your commands here
 %*********************************************************************************
 % ...
 \newcommand{\omissis}{\dots\negthinspace}
-\newcommand{\virgolette}[1]{``#1''}
+\newcommand{\doublequotes}[1]{``#1''}
 \newcommand{\caporali}[1]{«#1»}
-
-%
 \newcommand{\ie}{i.\,e.}
 \newcommand{\Ie}{I.\,e.}
 \newcommand{\eg}{e.\,g.}
 \newcommand{\Eg}{E.\,g.}
 
-% comuni
-\newcommand{\ct}{continuos time}
-\newcommand{\nb}{Na\"ive Bayes}
-\newcommand{\bn}{Bayesian Network}
-\newcommand{\class}{classifier}
-\newcommand{\ctbn}{\upcase \ct{} \bn{}}
-\newcommand{\ctnb}{\upcase \ct{} \nb{}}
-\newcommand{\cttanb}{\upcase \ct{} tree augumented \nb{}}
-\newcommand{\stats}{statistiche sufficienti}
-\newcommand{\pv}{variabile di processo}
-
-\makeatletter
-\newcommand{\omog}{omogene\@ifstar{o}{i}}
-\makeatother
-
-\makeatletter
-\newcommand{\cond}{condizional\@ifstar{e}{i}}
-\makeatother
-
-\makeatletter
-\newcommand{\im}{matric\@ifstar{e di intensit\`a}{i di intensit\`a}}
-\makeatother
-
-\makeatletter
-\newcommand{\cim}{\@ifstar{\im*{} \cond*}{\im{} \cond}}
-\makeatother
-
-\makeatletter
-\newcommand{\mprocess}{process\@ifstar{o di Markov}{i di Markov}}
-\makeatother
-
-\makeatletter
-\newcommand{\ctmp}{\@ifstar{\mprocess*{} a tempo continuo}{\mprocess{} a tempo continuo}}
-\makeatother
-
-% elementi matematici comuni
-\newcommand{\imsign}[1]{\set{Q}_{#1}}
-\newcommand{\cimsign}[2]{\imsign{\,#1\,\arrowvert\,#2}}
-\newcommand{\priorsign}[1]{\set{P}^0_{#1}}
-\newcommand{\tstat}[1]{T[\,\setel{#1}\,]}
-\newcommand{\mstat}[2][]{
-    \ifstrempty{#1}{%
-        M[\,\setel{#2}\,]%
-    }{%
-        M[\,\setel{#1}\,,\,#2\,]%
-    }%
-}
-\newcommand{\param}[1]{\boldsymbol{\textbf{\text{#1}}}}
-\newcommand{\paramhat}[1]{\boldsymbol{\hat{\textbf{#1}}}}
-\newcommand{\greekhat}[1]{\boldsymbol{\skew{-.5}\hat#1}}
-\newcommand{\evidencestream}[1]{(\set{x}^1\,,\,\set{x}^2\,,\,\dotsc\,,\,\set{x}^{#1})}
-
 %*********************************************************************************
-% Eccezioni all'algoritmo di sillabazione
+% Hypenation exceptions
 %*********************************************************************************
-\hyphenation{Fortran ma-cro-istru-zio-ne nitro-idrossil-amminico tem-po-ra-li}
-
-
+\hyphenation{Fortran ma-cro-istru-zio-ne nitro-idrossil-amminico}
