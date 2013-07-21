@@ -1,0 +1,410 @@
+% settings.tex
+%*********************************************************************************
+
+%*********************************************************************************
+% Comandi personali
+%*********************************************************************************
+\newcommand{\myName}{Leonardo~Di~Donato}% author
+\newcommand{\myTitle}{Continuos Time Bayesian Networks Classifiers}% title
+\newcommand{\myDegree}{Tesi di Laurea}% tipo di tesi
+\newcommand{\myUni}{Università degli Studi di Milano--Bicocca}% university
+\newcommand{\myFaculty}{Facoltà di Scienze Matematiche, Fisiche e Naturali}% facoltà
+\newcommand{\myDepartment}{Dipartimento di Informatica, Sistemistica e Comunicazione}% dipartimento
+\newcommand{\myProf}{Prof.~F.~Antonio~Stella}% relatore
+\newcommand{\myOtherProf}{Dott.~Daniele~Codecasa}% correlatore
+\newcommand{\myLocation}{Milano}% dove
+\newcommand{\myTime}{Settembre 2013}% quando
+\newcommand{\mySubject}{Continuos time Bayesian Networks}
+\newcommand{\myKeywords}{Classification, Continuos time Bayesian Network, CTBN, Continuos time Bayesian Newtork Classifier, CTBNC}
+
+%*********************************************************************************
+% TOC settings
+%*********************************************************************************
+% \setcounter{secnumdepth}{5}
+% \setcounter{tocdepth}{5}
+
+%*********************************************************************************
+% Chapters style
+%*********************************************************************************
+% Chapter number style: decomment if you want it with the same corpus font
+% \renewcommand{\chapterNumber}{%
+% \fontsize{70}{70}\usefont{\encodingdefault}{\sfdefault}{b}{n}%
+% }%
+
+% Workaround: multi-line titles
+\renewcommand\formatchapter[1]{%
+\begin{minipage}[b]{0.15\linewidth}
+\chapterNumber
+\end{minipage}%
+\begin{minipage}[b]{0.70\linewidth}%length of the second row
+\raggedright\spacedallcaps{#1}
+\end{minipage}
+}
+
+%*********************************************************************************
+% Analytical index
+%*********************************************************************************
+\makeindex
+
+% Balance columns of the last page
+% \let\orgtheindex\theindex
+% \let\orgendtheindex\endtheindex
+% \def\theindex{%
+% \def\twocolumn{\begin{multicols}{2}}%
+% \def\onecolumn{}%
+% \clearpage
+% \orgtheindex
+% }
+% \def\endtheindex{%
+% \end{multicols}%
+% \orgendtheindex
+% }
+
+% Indexing commands
+\newcommand*{\keyword}[2][]{#2\index{#2@#2#1}}% as simple keyword
+\newcommand{\keywordsub}[2][]{#2\index{#1!#2}}% as categorized keyword
+\newcommand{\keywordpagb}[1]{\keyword[|textbf]{#1}}% as simple keyword with bold page number
+\newcommand{\keywordpagi}[1]{\keyword[|textit]{#1}}% as simple keyword with italic page number
+\newcommand{\keywordbold}[1]{#1\index{#1@\textbf{#1}}}% as bold keyword
+\newcommand{\keyworditalic}[1]{#1\index{#1@\textsl{#1}}}% as italic keyword
+
+%*********************************************************************************
+% Impostazioni di amsmath, amssymb, amsthm
+%*********************************************************************************
+% force the equation numbers to be always the same size
+\makeatletter
+\renewcommand{\maketag@@@}[1]{\hbox{\m@th\normalsize\normalfont#1}}%
+\makeatother
+
+% operators
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% comandi per gli insiemi numerici (serve il pacchetto amssymb)
+\newcommand{\numberset}{\mathbb}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\R}{\numberset{R}}
+
+% comandi per gli insiemi
+\newcommand{\set}[1]{\mathbf{#1}}
+\newcommand{\setel}[1]{\mathnormal{#1}}  % o \mathrm o \mathit
+
+% comandi per i vettori
+\newcommand{\vect}[1]{\set{#1}}
+\newcommand{\vectel}[1]{\mathrm{#1}}
+
+% comandi per i simboli matematici che denotano schemi, categorie, concetti
+\newcommand{\conceptsym}[1]{\mathcal{#1}}
+
+% un ambiente per i sistemi
+\newenvironment{sistema}%
+  {\left\lbrace\begin{array}{@{}l@{}}}%
+  {\end{array}\right.}
+
+% comandi per le lettere greche
+% ...
+
+% reference for equation terms. use \underbrace{equation}_{\myterm{termA}}
+\newcounter{term}
+\renewcommand*{\theterm}{(\alph{term})}
+\AtBeginDocument{%
+  \let\mylabel\label
+}
+\newcommand{\myterm}[1]{%
+  \begingroup % keep the effects of \refstepcounter local
+    \refstepcounter{term}%
+    \mylabel{#1}%
+    \text{\theterm}%
+  \endgroup
+}
+
+%*********************************************************************************
+% Nuovi ambienti: definizioni, teoremi etc. etc.
+%*********************************************************************************
+% definizioni (serve il pacchetto amsthm)
+\newtheoremstyle{classicdef}% Nome
+{12pt}% Spazio che precede l’enunciato
+{12pt}% Spazio che segue l’enunciato
+{}% Stile del font dell’enunciato
+{}% Rientro (se vuoto, non c’è rientro,
+% \parindent = rientro dei capoversi)
+{\scshape}% Stile del font dell’intestazione
+{:}% Punteggiatura che segue l’intestazione
+{.5em}% Spazio che segue l’intestazione:
+% " " = normale spazio inter-parola;
+% \newline = a capo
+{}% Specifica l’intestazione dell’enunciato
+% (normalmente viene lasciata vuota)
+
+\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}
+% \newtheorem{osservazione}[definizione]{Osservazione}
+% \newtheorem{definizione}{Definizione}[section]
+\newtheorem{osservazione}{Osservazione}[definizione]
+
+% esempi
+\theoremstyle{definition}
+\newtheorem{esempio}{Esempio}[definizione]
+
+% note about definitions
+\theoremstyle{remark}
+\newtheorem{notabene}{Nota}[definizione]
+
+% note of section
+\theoremstyle{remark}
+\newtheorem{nota}{Nota}[section]
+
+% teoremi (serve il pacchetto amsthm)
+\newtheoremstyle{classicthm}% Nome
+{12pt}% Spazio che precede l’enunciato
+{12pt}% Spazio che segue l’enunciato
+{\itshape}% Stile del font dell’enunciato
+{}% Rientro (se vuoto, non c’è rientro,
+% \parindent = rientro dei capoversi)
+{\scshape}% Stile del font dell’intestazione
+{:}% Punteggiatura che segue l’intestazione
+{.5em}% Spazio che segue l’intestazione:
+% " " = normale spazio inter-parola;
+% \newline = a capo
+{}% Specifica l’intestazione dell’enunciato
+% (normalmente viene lasciata vuota)
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{cor}[teorema]{Corollario}
+\newtheorem{lem}[teorema]{Lemma}
+\newtheorem{prop}[teorema]{Proposizione}
+\newtheorem{oss}[teorema]{Osservazione}
+
+% leggi (serve il pacchetto amsthm)
+\newtheorem{legge}{Legge}
+\newtheorem{decreto}[legge]{Decreto}
+
+%*********************************************************************************
+% Impostazioni di acronym
+%*********************************************************************************
+\newcommand{\acroname}{Acronimi}
+% \renewcommand*{\acsfont}[1]{\textssc{#1}}                 % for MinionPro
+\renewcommand*{\acsfont}[1]{\textsmaller{#1}}               % customize font for long version acronyms [works only if footnote not activate]
+\renewcommand*{\acffont}[1]{#1}                             % idem, but for short version of acronyms
+\renewcommand{\bflabel}[1]{{#1}\hfill}                      % fix the list of acronyms
+\makeatletter                                               % macro that tweeks acronym package to rendere lowercase or not
+\newif\if@in@acrolist
+\AtBeginEnvironment{acronym}{\@in@acrolisttrue}
+\newrobustcmd{\ul}[2]{\if@in@acrolist#1\else#2\fi}          % \ul{C}{c}iao defines an uppercase and lowercase variant of the same acronym
+\newcommand{\ACF}[1]{{\@in@acrolisttrue\acf{#1}}}           % \ACF{<acronym>} force the defined capitalized variants of acronym letters/words
+\newcommand{\ACL}[1]{{\@in@acrolisttrue\acl{#1}}}           % \ACL{<acronym}
+\makeatother
+
+%*********************************************************************************
+% Impostazioni di biblatex
+%*********************************************************************************
+\defbibheading{bibliography}{%
+\cleardoublepage
+\manualmark
+\phantomsection
+\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+\chapter*{\bibname\markboth{\spacedlowsmallcaps{\bibname}}
+{\spacedlowsmallcaps{\bibname}}}}
+
+%*********************************************************************************
+% Definizione di un linguaggio di pseudo-codice
+%*********************************************************************************
+\lstdefinelanguage{pseudo}{
+    morekeywords=%
+    {
+        for,foreach,return,if,else,ifelse,max,min,in,len,log,index,var,function,seqlen,as,new,while,unique,which
+    },
+    morecomment=[l][\color{Green}\ttfamily]{//},
+    morecomment=[s][\color{Green}\ttfamily]{/*}{*/},
+    morestring=[b][\color{Red}\rmfamily]",
+    moredelim=[is][\color{Orange}]{|*}{*|}
+}
+
+%*********************************************************************************
+% Impostazioni di listings
+%*********************************************************************************
+\lstset{
+    %language=pseudo,%[LaTeX]Tex,%C++,
+    basicstyle=\normalsize\ttfamily,
+    % identifierstyle=\color{NavyBlue},
+    % keywordstyle=\bfseries,%\color{RoyalBlue},%\bfseries,
+    % commentstyle=\color{Green}\ttfamily,
+    % stringstyle=\rmfamily,
+    numbers=left,%none
+    numberstyle=\scriptsize,%\tiny
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,%fttt,%
+    frame=TB,%lines,
+    tabsize=1,
+    escapeinside={<ls>}{<le>}
+}
+
+% Dichiarazioni utili per l'indice della tesi e le etichette
+\addto\captionsitalian{%
+\renewcommand{\lstlistingname}{Algoritmo}}
+\addto\captionsitalian{%
+\renewcommand{\lstlistlistingname}{Elenco degli algoritmi}}
+\providecommand*{\lstlistingautorefname}{algoritmo}
+\providecommand*{\lstnumberautorefname}{linea}
+
+%*********************************************************************************
+% Impostazioni di hyperref
+%*********************************************************************************
+\hypersetup{%
+    % hyperfootnotes=false,pdfpagelabels,
+    %draft,	% = elimina tutti i link (utile per stampe in bianco e nero)
+    colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,%
+    % decommenta la riga seguente per avere link in nero (per esempio per la stampa in bianco e nero)
+    % colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={\mySubject},%
+    pdfkeywords={\myKeywords},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref, classicthesis and arsclassica}%
+}
+
+%*********************************************************************************
+% Impostazioni di graphicx
+%*********************************************************************************
+\graphicspath{{images/}} % cartella dove sono riposte le immagini
+
+%*********************************************************************************
+% Margini ottimizzati per l'A4
+%*********************************************************************************
+\areaset[current]{336pt}{750pt}
+\setlength{\marginparwidth}{7em}
+\setlength{\marginparsep}{2em}%
+
+%*********************************************************************************
+% Utility
+%*********************************************************************************
+% make first letter uppercase
+\makeatletter
+\def\upcase{\expandafter\makeupcase}
+\def\makeupcase#1{\uppercase{#1}}
+\makeatother
+
+% make first letter lowercase
+\makeatletter
+\def\lwcase{\expandafter\makelwcase}
+\def\makelwcase#1{\lowercase{#1}}
+\makeatother
+
+%*********************************************************************************
+% References
+%*********************************************************************************
+\addto\extrasitalian{%
+  \def\equationautorefname{equazione}%
+}
+\addto\extrasitalian{%
+  \def\chapterautorefname{capitolo}%
+}
+\addto\extrasitalian{%
+  \def\sectionautorefname{sezione}%
+}
+\addto\extrasitalian{%
+  \def\subsectionautorefname{sottosezione}%
+}
+\addto\extrasitalian{%
+  \def\subsubsectionautorefname{sottosezione}%
+}
+
+%*********************************************************************************
+% Custom references for \autoref
+%*********************************************************************************
+\newcommand{\definizioneautorefname}{definizione}
+\newcommand{\osservazioneautorefname}{osservazione}
+\newcommand{\notabeneautorefname}{nota}
+\newcommand{\esempioautorefname}{esempio}
+\newcommand{\termautorefname}{termine}
+\newcommand{\teoremaautorefname}{teorema}
+
+%*********************************************************************************
+% Set footnote's continuos numbering and linking capabilities (using cleveref and chngcntr packages)
+%*********************************************************************************
+\counterwithout{footnote}{chapter}
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+%*********************************************************************************
+% Altro
+%*********************************************************************************
+% ...
+\newcommand{\omissis}{\dots\negthinspace}
+\newcommand{\virgolette}[1]{``#1''}
+\newcommand{\caporali}[1]{«#1»}
+
+%
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.}
+
+% comuni
+\newcommand{\ct}{continuos time}
+\newcommand{\nb}{Na\"ive Bayes}
+\newcommand{\bn}{Bayesian Network}
+\newcommand{\class}{classifier}
+\newcommand{\ctbn}{\upcase \ct{} \bn{}}
+\newcommand{\ctnb}{\upcase \ct{} \nb{}}
+\newcommand{\cttanb}{\upcase \ct{} tree augumented \nb{}}
+\newcommand{\stats}{statistiche sufficienti}
+\newcommand{\pv}{variabile di processo}
+
+\makeatletter
+\newcommand{\omog}{omogene\@ifstar{o}{i}}
+\makeatother
+
+\makeatletter
+\newcommand{\cond}{condizional\@ifstar{e}{i}}
+\makeatother
+
+\makeatletter
+\newcommand{\im}{matric\@ifstar{e di intensit\`a}{i di intensit\`a}}
+\makeatother
+
+\makeatletter
+\newcommand{\cim}{\@ifstar{\im*{} \cond*}{\im{} \cond}}
+\makeatother
+
+\makeatletter
+\newcommand{\mprocess}{process\@ifstar{o di Markov}{i di Markov}}
+\makeatother
+
+\makeatletter
+\newcommand{\ctmp}{\@ifstar{\mprocess*{} a tempo continuo}{\mprocess{} a tempo continuo}}
+\makeatother
+
+% elementi matematici comuni
+\newcommand{\imsign}[1]{\set{Q}_{#1}}
+\newcommand{\cimsign}[2]{\imsign{\,#1\,\arrowvert\,#2}}
+\newcommand{\priorsign}[1]{\set{P}^0_{#1}}
+\newcommand{\tstat}[1]{T[\,\setel{#1}\,]}
+\newcommand{\mstat}[2][]{
+    \ifstrempty{#1}{%
+        M[\,\setel{#2}\,]%
+    }{%
+        M[\,\setel{#1}\,,\,#2\,]%
+    }%
+}
+\newcommand{\param}[1]{\boldsymbol{\textbf{\text{#1}}}}
+\newcommand{\paramhat}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+\newcommand{\greekhat}[1]{\boldsymbol{\skew{-.5}\hat#1}}
+\newcommand{\evidencestream}[1]{(\set{x}^1\,,\,\set{x}^2\,,\,\dotsc\,,\,\set{x}^{#1})}
+
+%*********************************************************************************
+% Eccezioni all'algoritmo di sillabazione
+%*********************************************************************************
+\hyphenation{Fortran ma-cro-istru-zio-ne nitro-idrossil-amminico tem-po-ra-li}
+
+

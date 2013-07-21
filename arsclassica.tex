@@ -1,0 +1,170 @@
+%****************************************************************%
+%                                                                %
+% Modello di tesi di laurea o di dottorato di Lorenzo Pantieri © %
+%                                                                %
+%         versione: 28 agosto 2012                               %
+%                                                                %
+%****************************************************************%
+
+% I seguenti commenti speciali impostano:
+% 1. utf8 come codifica di input
+% 2. PDFLaTeX come motore di composizione
+% 3. tesi.tex come documento principale
+% 4. il controllo ortografico italiano per l'editor.
+
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+% !TEX root = arsclassica.tex
+% !TEX spellcheck = it-IT
+
+\documentclass[
+              11pt,%                        % corpo del font principale
+              a4paper,%                     % carta A4
+%             twoside,openright,%           % fronte-retro
+              oneside,openany,%             % solo fronte
+              titlepage,%                   % dopo il titolo deve iniziare una nuova pagina
+              %fleqn,%                      % position equations at a fixed indent from the left margin rather than centered in the text column (amsmath option)
+              headinclude,,footinclude,%    % testatina e piede di pagina
+              BCOR5mm,%                     % rilegatura di 5 mm
+              numbers=noenddot,%            % niente punto dopo il numero delle sezioni
+              cleardoublepage=empty,%       % pagine vuote senza testatina e piede di pagina
+              tablecaptionabove,%           % didascalie in cima alle tabelle
+              %draft%                       % sostituire con final quando completato
+              ]{scrreprt}                   % classe report di KOMA-Script;
+
+\usepackage[T1]{fontenc}                    % codifica dei font:
+                                            % NOTA BENE: richiede una distribuzione *completa* di LaTeX (per esempio TeXLive o MiKTeX *complete*)
+
+\usepackage{textcomp}                       % fix warning with missing font shapes
+\usepackage{scrhack}                        % fix warnings when using KOMA with listings package
+\usepackage{xspace}                         % to get the spacing after macros right
+
+\usepackage[utf8]{inputenc}                 % codifica di input; anche [latin1] va bene
+                                            % NOTA BENE! va accordata con le preferenze dell'editor
+
+\usepackage[english,italian]{babel}         % per scrivere in italiano e in inglese;
+                                            % l'ultima lingua (l'italiano) risulta predefinita
+
+\usepackage[suftesi]{frontespizio}          % frontespizo
+                                            % per includerlo nel documento bisogna:
+                                            % 1. compilare una prima volta tesi.tex;
+                                            % 2. compilare a parte tesi-frn.tex, generato dalla compilazione precedente;
+                                            % 3. compilare ancora tesi.tex che cercherà il file tesi-frn.pdf
+
+\usepackage{indentfirst}                    % rientra il primo capoverso di ogni sezione
+
+\usepackage{graphicx}                       % immagini
+
+\usepackage{listings}                       % codici
+
+\usepackage[font=small]{quoting}            % citazioni
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts}% matematica
+
+\usepackage[italian]{varioref}              % riferimenti completi della pagina
+
+\usepackage{mparhack,fixltx2e,relsize}      % finezze tipografiche
+
+\usepackage[printonlyused,
+            smaller,
+            withpage]{acronym}              % acronimi
+
+\usepackage{tabularx}                       % tabelle di larghezza prefissata
+%\setlength{\extrarowheight}{3pt}           % increase table row height
+%\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
+%\newcommand{\myfloatalign}{\centering}     % to be used with each float for alignment
+%\usepackage{caption}
+%\captionsetup{format=hang,font=small}
+
+\usepackage[babel,
+            italian=guillemets]{csquotes}   % rende automatiche alcune scelte stilistiche dipendenti dalla lingua:
+                                            % quando viene usato il comando \mkbibquote si otterranno le virgolette orizzontali invece che quelle verticali
+\usepackage[style=philosophy-modern,
+            hyperref,backref,natbib,
+            backend=biber]{biblatex}       % eccellente pacchetto per la bibliografia;
+                                            % philosophy-modern produce uno stile di citazione autore/anno
+                                            % aggiungere opzione square dopo backref per parentesti quadrate invece che tonde
+                                            % numeric-comp produce riferimenti numerici
+
+\bibliography{bibliography}                 % database di biblatex
+
+\usepackage{subfig}                         % sottofigure, sottotabelle
+
+\usepackage{lipsum}                         % testo fittizio
+
+\usepackage{eurosym}                        % simbolo dell'euro
+
+% ********************************************************************
+% Available options for classicthesis.sty:
+% drafting
+% parts nochapters linedheaders
+% eulerchapternumbers beramono eulermath pdfspacing minionprospacing
+% tocaligned dottedtoc manychapters
+% listings floatperchapter subfig
+% ********************************************************************
+\usepackage[eulerchapternumbers,%           % numeri dei capitoli nel font Euler
+            subfig,%                        % se si usa il pacchetto subfig
+            %minionpro,                     %
+            beramono,%                      % Bera Mono come font a spaziatura fissa
+            eulermath,%                     % AMS Euler come font per la matematica
+            pdfspacing,%                    % migliora il riempimento di riga
+            listings,%                      % codici
+            %parts,%                        % da decommentare in un documento diviso in parti
+            dottedtoc,%                     % allinea a destra i numeri di pagina nell'indice
+            floatperchapter                 % numerazione per capitolo dei float (e.g. tabelle, figure, listings)
+            ]{classicthesis}                % stile classicthesis
+
+
+\usepackage{arsclassica}                    % modifica alcuni aspetti di classicthesis
+
+\usepackage{bookmark}                       % segnalibri
+
+\usepackage{etoolbox}
+
+\usepackage[noabbrev]{cleveref}
+
+\usepackage{chngcntr}
+
+\usepackage{makeidx}                        % indice analitico
+
+\usepackage{multicol}
+
+%******************************************************************
+% Settings
+%******************************************************************
+\input{settings}                            % file con le impostazioni personali
+%******************************************************************
+% Document
+%******************************************************************
+\begin{document}
+\pagestyle{scrheadings}
+\pagenumbering{roman}
+%******************************************************************
+% Front matter
+%******************************************************************
+\input{frontmatter/frontespizio}
+\input{frontmatter/colophon}
+\input{frontmatter/dedication}
+\input{frontmatter/indexes}
+\input{frontmatter/summary_abstract}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/introduction}
+\cleardoublepage
+%******************************************************************
+% Body matter
+%******************************************************************
+\pagenumbering{arabic}
+\input{chapters/1}
+\input{chapters/2}
+\input{chapters/3}
+% *****************************************************************
+% Backmatter
+%******************************************************************
+\appendix
+\input{backmatter/appendix1}
+\input{backmatter/appendix2}
+\input{backmatter/acronyms}
+\input{backmatter/index}
+\input{backmatter/bibliography}
+\input{backmatter/declaration}
+\end{document}

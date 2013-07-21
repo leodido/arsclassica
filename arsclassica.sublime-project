@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"file_exclude_patterns": ["*-blx.bib", "*.aux", "*.bbl", "*.blg", "*.fdb_latexmk", "*.lof", "*.log", "*.lot", "*.run", "*.run.xml", "*.synctex", "*.synctex.gz", "*.toc", "*.sublime-project", "*.sublime-project~", "*.sublime-workspace", "*.sublime-workspace~"]
+		}
+	],
+	"TEXroot": "./tesi.tex"	
+}

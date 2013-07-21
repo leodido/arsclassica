@@ -1,0 +1,71 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = ../arsclassica.tex
+% !TEX spellcheck = it-IT
+
+%************************************************
+\chapter{Lorem}
+\label{cap:lorem}
+%************************************************
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque.
+
+\section{Esempi}
+
+\subsection{Tabelle}
+
+\lipsum
+
+\begin{table}[tb]
+\caption[Un esempio di tabella mobile]{Un esempio di tabella mobile.}
+\label{tab:esempio}
+\centering
+\begin{tabular}{cc}
+\toprule
+$p$ & $\lnot p$ \\ 
+\midrule
+V   & F \\ 
+F   & V \\
+\bottomrule 
+\end{tabular}
+\end{table}
+
+La tabella~\vref{tab:esempio} fornisce un esempio di tabella mobile.
+
+\lipsum[1-2]
+
+
+\subsection{Figure}
+
+\lipsum[2]
+
+\begin{figure}[tb] 
+\centering 
+\includegraphics[width=0.5\columnwidth]{GalleriaStampe} 
+\caption[Un esempio di figura mobile]{Un esempio di figura mobile (l'immagine, che riproduce la litografia \emph{Galleria di stampe}, di M.~Escher,\index{Escher, M.~C.} proviene da \url{http://www.mcescher.com/}).}
+\label{fig:galleria} 
+\end{figure}
+
+La figura~\vref{fig:galleria} fornisce un esempio di figura mobile.
+
+\lipsum[3]
+
+\begin{figure}[tb]
+\centering
+\subfloat[Asia personas duo.]
+{\includegraphics[width=.45\columnwidth]{Lorem}} \quad
+\subfloat[Pan ma signo.]
+{\label{fig:ipsum}%
+\includegraphics[width=.45\columnwidth]{Ipsum}} \\
+\subfloat[Methodicamente o uno.]
+{\includegraphics[width=.45\columnwidth]{Dolor}} \quad
+\subfloat[Titulo debitas.]
+{\includegraphics[width=.45\columnwidth]{Sit}}
+\caption[Tu duo titulo debitas latente]{Tu duo titulo debitas
+latente.}
+\label{fig:esempio}
+\end{figure}
+
+La figura~\vref{fig:esempio} costituisce un esempio di figura mobile.
+
+\lipsum[4]
