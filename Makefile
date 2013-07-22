@@ -1,15 +1,28 @@
-clean:	
-	find . -name '*~' -o -name '*-frn.tex' -o -name '*.fls' -o -name '*.acn' -o -name '*.acr' -o -name '*.alg' -o -name '*.aux' -o -name '*.bcf' -o -name '*.bbl' -o -name '*.blg' -o -name '*.dvi' -o -name '*.fdb_latexmk' -o -name '*.glg' -o -name '*.glo' -o -name '*.gls' -o -name '*.idx' -o -name '*.ilg' -o -name '*.ind' -o -name '*.ist' -o -name '*.lof' -o -name '*.log' -o -name '*.lot' -o -name '*.lol' -o -name '*.maf' -o -name '*.mtc' -o -name '*.mtc0' -o -name '*.nav' -o -name '*.nlo' -o -name '*.out' -o -name '*.pdfsync' -o -name '*.ps' -o -name '*.snm' -o -name '*.synctex.gz' -o -name '*.toc' -o -name '*.vrb' -o -name '*.xdy' -o -name '*.tdo' -o -name '*.run.xml' -o -name '*-blx.bib' | xargs $(RM);
+ROOT_FILE 	= arsclassica
+BACKUP_FILES = *~
+CLEAN_FILES = $(BACKUP_FILES) *-frn.tex *.fls *.acn *.acr *.alg *.aux *.bcf *.bbl *.blg *.dvi *.fdb_latexmk *.glg *.glo *.gls *.idx *.ilg *.ind *.ist *.lof *.log *.lot *.lol *.maf *.mtc *.mtc0 *.nav *.nlo *.out *.pdfsync *.ps *.snm *.synctex.gz *.toc *.vrb *.xdy *.tdo *.run.xml *-blx.bib
+DIST_FILES 	= $(ROOT_FILE).pdf $(ROOT_FILE)-frn.pdf
 
-deepclean:
-	$(MAKE) clean && $(RM) arsclassica.pdf arsclassica-frn.pdf
+.PHONY : clean distclean tex index frontispiece biber
 
-frontispiece:
-	pdflatex arsclassica-frn.tex
+clean:
+	echo $(CLEAN_FILES) | xargs $(RM); \
+	find . -name '$(BACKUP_FILES)' | xargs $(RM);
 
-index:
-	makeindex -s classic arsclassica
+distclean: clean
+	$(RM) $(DIST_FILES)
 
-thesis:
-	latexmk -f -pdf -pdflatex="cat responses | pdflatex -interaction=nonstopmode" -use-make arsclassica.tex
+tex: 
+	latexmk -silent -f -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make $(ROOT_FILE).tex
+
+index: tex
+	makeindex -s classic $(ROOT_FILE)
 	
+frontispiece: tex
+	if [ ! -f "$(ROOT_FILE)-frn.pdf" ]; \
+	then \
+		pdflatex $(ROOT_FILE)-frn.tex; \
+	fi;
+
+biber: tex
+	biber $(ROOT_FILE)
