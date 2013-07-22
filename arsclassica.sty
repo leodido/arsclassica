@@ -1,0 +1,282 @@
+%************************************************************
+% arsclassica.sty
+%
+% copyright (C) 2008-2012 Lorenzo Pantieri
+% http://www.lorenzopantieri.net/
+%
+%************************************************************
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{arsclassica}[2012/02/21 v4.0 Customizing ClassicThesis (LP)]
+\RequirePackage{classicthesis}
+\RequirePackage{caption}
+
+%************************************************************
+% Iwona
+%************************************************************
+\renewcommand{\sfdefault}{iwona}
+
+
+%************************************************************
+% Chapter numbers
+%************************************************************
+\let\chapterNumber\undefined 
+\ifthenelse{\boolean{@eulerchapternumbers}}
+{\newfont{\chapterNumber}{eurb10 scaled 5000}}% 
+{\newfont{\chapterNumber}{pplr9d scaled 5000}}
+
+
+%************************************************************
+% Fancy stuff
+%************************************************************
+\ifthenelse{\boolean{@minionprospacing}}%
+{%
+  \DeclareRobustCommand{\spacedallcaps}[1]{\sffamily%
+  \textssc{\MakeTextUppercase{#1}}}%
+  \DeclareRobustCommand{\spacedlowsmallcaps}[1]%
+  {\sffamily\textssc{\MakeTextLowercase{#1}}}%
+}{%
+  \ifthenelse{\boolean{@pdfspacing}}%
+  {%
+    \microtypesetup{expansion=false}%
+    \DeclareRobustCommand{\spacedallcaps}[1]%
+    {\sffamily\textls[160]{\MakeTextUppercase{#1}}}%
+    \DeclareRobustCommand{\spacedlowsmallcaps}[1]%
+    {\sffamily\textls[80]{\scshape\MakeTextLowercase{#1}}}%
+  }{%
+    \RequirePackage{soul} 
+    \sodef\allcapsspacing{\sffamily\upshape}%
+    {0.15em}{0.65em}{0.6em}%
+    \sodef\lowsmallcapsspacing{\sffamily\scshape}%
+    {0.075em}{0.5em}{0.6em}%   
+    \DeclareRobustCommand{\spacedallcaps}[1]%
+    {\MakeTextUppercase{\allcapsspacing{#1}}}%   
+	\DeclareRobustCommand{\spacedlowsmallcaps}[1]%
+	{\MakeTextLowercase{\textsc%
+	   {\lowsmallcapsspacing{#1}}}}%
+  }%
+}
+%************************************************************
+
+
+%************************************************************
+% Headlines
+%************************************************************
+\renewcommand{\sectionmark}[1]{\markright{\textsc%
+{\MakeTextLowercase{\thesection}} \spacedlowsmallcaps{#1}}}
+\lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray}%
+\vline}%
+\color{halfgray}\hspace{0.5em}\headmark\hfil}} 
+\rohead{\mbox{\hfil{\color{halfgray}%
+\headmark\hspace{0.5em}}%
+\rlap{\small{\color{halfgray}\vline}\kern1em\thepage}}}
+\renewcommand{\headfont}{\normalfont\sffamily}
+\renewcommand{\pnumfont}{\small\sffamily}
+  
+    
+%************************************************************
+% Layout of the chapter-, section-, subsection-,
+% subsubsection-, paragraph and description-headings
+%************************************************************
+\RequirePackage{titlesec}
+	% parts
+	\ifthenelse{\boolean{@parts}}%
+	{%
+    \titleformat{\part}[display]
+        {\normalfont\centering\large}%
+        {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
+        {\color{Maroon}\spacedallcaps}
+    }{\relax}
+    % chapters
+    \ifthenelse{\boolean{@linedheaders}}%
+    {%
+    \titleformat{\chapter}[display]%             
+        {\relax}{\raggedleft{\color{halfgray}%
+        \chapterNumber\thechapter} \\ }{0pt}%
+        {\titlerule\vspace*{.9\baselineskip}\raggedright%
+        \spacedallcaps}%
+        [\normalsize\vspace*{.8\baselineskip}\titlerule]%
+    }{%  
+    \titleformat{\chapter}[block]%
+        {\normalfont\Large\sffamily}%
+        {{\color{halfgray}\chapterNumber\thechapter%
+        \hspace{10pt}\vline}  }{10pt}%
+        {\spacedallcaps}}
+    % sections
+    \titleformat{\section} 
+    	  {\normalfont\Large\sffamily}{\textsc%
+	  {\MakeTextLowercase{\thesection}}}%
+         {1em}{\spacedlowsmallcaps}
+    % subsections
+    \titleformat{\subsection}
+        {\normalfont\sffamily}{\textsc{\MakeTextLowercase%
+        {\thesubsection}}}{1em}{\normalsize}
+    % subsubsections
+    \titleformat{\subsubsection}
+        {\normalfont\sffamily\itshape}{\textsc%
+        {\MakeTextLowercase{\thesubsubsection}}}%
+        {1em}{\normalsize\itshape}        
+    % paragraphs
+    \titleformat{\paragraph}[runin]
+        {\normalfont\normalsize\sffamily}{\textsc%
+        {\MakeTextLowercase{\theparagraph}}}%
+        {0pt}{\spacedlowsmallcaps}    
+    % descriptionlabels
+    \renewcommand{\descriptionlabel}[1]{\hspace*{\labelsep}%
+    \bfseries\spacedlowsmallcaps{#1}}
+    \titlespacing*{\chapter}{0pt}{1\baselineskip}%
+    {2\baselineskip}
+    \titlespacing*{\section}{0pt}{2\baselineskip}%
+    {.8\baselineskip}[\marginparsep]
+    \titlespacing*{\subsection}{0pt}{1.5\baselineskip}%
+    {.8\baselineskip}[\marginparsep]
+    \titlespacing*{\paragraph}{0pt}{1\baselineskip}%
+    {1\baselineskip}
+    %
+    \newcommand\formatchapter[1]{% 
+    \vbox to \ht\strutbox{ 
+    \setbox0=\hbox{\chapterNumber\thechapter\hspace{10pt}\vline\ } 
+    \advance\hsize-\wd0 \advance\hsize-10pt\raggedright 
+    \spacedallcaps{#1}\vss}} 
+    \titleformat{\chapter}[block] 
+       {\normalfont\Large\sffamily} 
+       {\textcolor{halfgray}{\chapterNumber\thechapter} 
+       \hspace{10pt}\vline\ }{10pt} 
+    {\formatchapter}    
+	%
+	\if@twoside\rofoot[\mbox{\makebox[0pt][l]{\kern1em\thepage}}]{}\fi
+
+	
+%************************************************************
+% itemize
+%************************************************************
+\renewcommand\labelitemi{\color{halfgray}$\bullet$} 
+
+
+%************************************************************
+% caption
+%************************************************************
+\captionsetup{format=hang,font=small,labelfont={sf,bf}}
+\captionsetup[table]{skip=\medskipamount}
+
+
+%************************************************************
+% graphicx, xcolor
+%************************************************************
+\definecolor{aliceblue}{RGB}{240,248,255}
+
+\let\ars@@includegraphics\includegraphics
+\newcommand{\arsincludegraphics}[2][]{%
+  \begingroup\setlength{\fboxsep}{0pt}%
+   \colorbox{aliceblue}{\ars@@includegraphics[#1]{#2}}%
+  \endgroup}
+
+
+%************************************************************
+% hyperref
+%************************************************************
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=1, 
+    pdfstartview=FitV, breaklinks=true, pdfpagemode=UseNone, 
+    pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered,
+    bookmarksopen=true,%
+    bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, 
+    citecolor=webgreen,%
+    %hyperfootnotes=false,pdfpagelabels,
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and ClassicThesis}%
+}
+
+
+%************************************************************
+% minitoc
+%************************************************************
+\@ifpackageloaded{minitoc} 
+{% 
+      \MakeLowercase{\gdef\noexpand\ptctitle{\ptctitle}} 
+      \MakeLowercase{\gdef\noexpand\mtctitle{\mtctitle}} 
+      \MakeLowercase{\gdef\noexpand\stctitle{\stctitle}} 
+      \setlength{\mtcindent}{0pt} 
+      \renewcommand{\mtifont}{\normalsize\sffamily 
+         \scshape\lsstyle} 
+} 
+{}
+
+
+%************************************************************
+% \ctLaTeX, \ctLaTeXe, \ctTeX
+%************************************************************
+\def\@ppljLaTeX{{\upshape 
+   \sbox\z@{\check@mathfonts\fontsize\sf@size\z@%
+   \math@fontsfalse\selectfont A}% 
+   \sbox\tw@ T% 
+   L\kern-.55\wd\z@ 
+   \vbox to\ht\tw@{\copy\z@\vss}% 
+   \kern-.25\wd0 
+        \@ctTeX}} 
+\def\@ppljTeX{{\upshape T\kern -.08em \lower .3ex\hbox{E}%
+\kern -.08em X}} 
+
+\def\@ppljscLaTeX{{\upshape\scshape 
+   \sbox\z@{\check@mathfonts\fontsize\sf@size\z@%
+   \math@fontsfalse\selectfont a}% 
+   \sbox\tw@ t% 
+   l\kern-.6\wd\z@ 
+   \vbox to\ht\tw@{\copy\z@\vss}% 
+   \kern-.25\wd0 
+        \@ctTeX}} 
+\def\@ppljscTeX{{\upshape\scshape t\kern -.085em
+\lower .25ex\hbox{e}\kern -.085em x}} 
+
+\def\@iwonaLaTeX{{\upshape 
+   \sbox\z@{\check@mathfonts\fontsize\sf@size\z@%
+   \math@fontsfalse\selectfont A}% 
+   \sbox\tw@ T% 
+   L\kern-.5\wd\z@ 
+   \vbox to\ht\tw@{\copy\z@\vss}% 
+   \kern-.2\wd0 
+        \@ctTeX}} 
+\def\@iwonaTeX{{\upshape T\kern -.12em \lower .3ex\hbox{E}%
+   \kern -.12em X}} 
+
+\def\@iwonascLaTeX{{\upshape\scshape 
+   \sbox\z@{\check@mathfonts\fontsize\sf@size\z@%
+   \math@fontsfalse%
+   \selectfont a}% 
+   \sbox\tw@ t% 
+   l\kern-.5\wd\z@ 
+   \vbox to\ht\tw@{\copy\z@\vss}% 
+   \kern-.2\wd0 
+        \@ctTeX}} 
+\def\@iwonascTeX{{\upshape\scshape t\kern -.1em
+   \lower .25ex\hbox{e}\kern -.1em x}} 
+
+\def\ct@sc{sc} 
+\def\@ctTeX{\csname @\f@family\ifx\f@shape\ct@sc sc%
+\fi TeX\endcsname} 
+
+\DeclareRobustCommand\ctLaTeX{% 
+  \texorpdfstring{\textls[1]{\csname @\f@family\ifx%
+  \f@shape\ct@sc sc\fi LaTeX\endcsname}}{LaTeX}} 
+\DeclareRobustCommand\ctLaTeXe{% 
+  \texorpdfstring{\textls[1]{\ctLaTeX\csname @\ifx%
+  \f@shape\ct@sc sc\fi twoe\endcsname}}{LaTeX2e}} 
+
+\def\@twoe{\kern.1em$\m@th2_{\textstyle\varepsilon}$} 
+\def\@sctwoe{\kern.15em$\m@th{\scriptscriptstyle2}%
+_\varepsilon$}
+
+\DeclareRobustCommand\ctTeX{% 
+  \texorpdfstring{\textls[1]{\@ctTeX}}{TeX}}
+
+\def\toc@headingbkORrp{% 
+  \def\toc@heading{% 
+    \chapter*{\contentsname}% 
+    \@mkboth{\spacedlowsmallcaps{\contentsname}} 
+      {\spacedlowsmallcaps{\contentsname}}}} 
+\@ifclassloaded{scrreprt}{\toc@headingbkORrp}{} 
+\@ifclassloaded{scrbook}{\toc@headingbkORrp}{}
