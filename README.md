@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- A complete ![latexlogo](http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg) distribution (e.g., texlive).
+- A complete <img src="http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg" alt="LaTeX logo" style="width: 150px;"/> distribution (e.g., texlive).
 
 - The `make` build automation utility.
 
