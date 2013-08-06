@@ -1,10 +1,10 @@
 # ArsClassica
 
-![latex](http://latex.codecogs.com/gif.latex?\LaTeX) thesis template based on *ArsClassica* and *ClassicThesis* packages with custom and useful additions. 
+![latexlogo](http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg) thesis template based on *ArsClassica* and *ClassicThesis* packages with custom and useful additions. 
 
 ## Prerequisites
 
-- A complete ![latex](http://latex.codecogs.com/gif.latex?\LaTeX) distribution (e.g., texlive).
+- A complete ![latexlogo](http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg) distribution (e.g., texlive).
 
 - The `make` build automation utility.
 
