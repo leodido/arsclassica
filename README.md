@@ -10,23 +10,23 @@ This template provides the following **enhancements**:
 
 - Fixes and extensions (see file `settings.tex`):
 
-	- Bibliography back-end default to `biber`
+	- **Bibliography** back-end default to `biber`
 
-    - Multi-line titles supported
+    - Support multi-line titles
 
     - Alternative chapter numbers style
 
-    - Integrated analytical index
+    - Integrated **analytical index**
 
     - Custom command to indexing terms (e.g., `\keywordsub[category]{term}`)
 
-    - Support for acronyms
+    - Support for **acronyms**
 
     - Predefined custom environments (e.g., theorems, definitions)
 
     - Custom reference examples
 
-    - Predefined listings environment
+    - Predefined **listings environment**
 
     - Predefined pseudo-code listings language
 
@@ -75,6 +75,27 @@ The suggested workflow is:
 * Update the analytical index:
 
     `make -s index && make -s tex`.
+
+## Editor
+
+This template does not need any specific editor to work: you can simply use which editor you want.
+
+However, if you prefer to use Sublime Text you can edit and compile it installing [LaTeXTools](https://github.com/SublimeText/LaTeXTools) package. Create a Sublime Text project file containing:
+
+```
+{
+    "folders":
+    [
+        {
+            "path": ".",
+            "file_exclude_patterns": ["*-blx.bib", "*.aux", "*.bbl", "*.blg", "*.fdb_latexmk", "*.lof", "*.log", "*.lot", "*.run", "*.run.xml", "*.synctex", "*.synctex.gz", "*.toc", "*.sublime-project", "*.sublime-project~", "*.sublime-workspace", "*.sublime-workspace~"]
+        }
+    ],
+    "TEXroot": "./arsclassica.tex" 
+}
+```
+
+Put the project file inside the folder, open Sublime Text and compile it (`CTRL + B`).
 
 ## Credits
 
