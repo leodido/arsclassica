@@ -8,7 +8,7 @@ This template provides the following **enhancements**:
 
 2. Additional typographical niceties
 
-3. Fixes and extensions (see file `settings.tex`):
+3. Fixes and extensions:
 
     - Bibliography back-end default to `biber`
     - Multi-line titles supported
