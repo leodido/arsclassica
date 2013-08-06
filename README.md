@@ -80,7 +80,9 @@ The suggested workflow is:
 
 This template does not need any specific editor to work: you can simply use which editor you want.
 
-However, if you prefer to use Sublime Text you can edit and compile it installing [LaTeXTools](https://github.com/SublimeText/LaTeXTools) package. Create a Sublime Text project file containing:
+However, if you prefer to use Sublime Text you can edit and compile `arsclassica` template simply installing [LaTeXTools](https://github.com/SublimeText/LaTeXTools) package.
+
+Create a Sublime Text project file containing:
 
 ```
 {
@@ -96,6 +98,8 @@ However, if you prefer to use Sublime Text you can edit and compile it installin
 ```
 
 Put the project file inside the folder, open Sublime Text and compile it (`CTRL + B`).
+
+Note that this actions is equivalent to `make -s tex`. Therefore, before running it, you need to do a complete compilation (i.e., `make -s thesis`).
 
 ## Credits
 
