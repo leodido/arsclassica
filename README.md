@@ -8,18 +8,28 @@ This template provides the following **enhancements**:
 
 2. Additional typographical niceties
 
-3. Fixes and extensions:
+3. Fixes and extensions (see file `settings.tex`):
 
-    - Bibliography back-end default to `biber`
+	- Bibliography back-end default to `biber`
+
     - Multi-line titles supported
+
     - Alternative chapter numbers style
+
     - Integrated analytical index
+
     - Custom command to indexing terms (e.g., `\keywordsub[category]{term}`)
+
     - Support for acronyms
+    
     - Predefined custom environments (e.g., theorems, definitions)
+
     - Custom reference examples
+
     - Predefined listings environment
+
     - Predefined pseudo-code listings language
+
     - Various utility commands (e.g., `\lwcase` to lowercase the first letter of the word that follows it)
 
 ## Prerequisites
