@@ -84,6 +84,6 @@ The suggested workflow is:
 
     Documentation and features explaination ca be found [here](http://ftp.uniroma2.it/TeX/macros/latex/contrib/arsclassica/ArsClassica.pdf).
 
-* [Andrè Miede](http://www.ctan.org/author/miede),
+* [André Miede](http://www.ctan.org/author/miede),
     
     author of *ClassicThesis* package ([link](http://ctan.mirror.garr.it/mirrors/CTAN/macros/latex/contrib/classicthesis/ClassicThesis.pdf)) which pro­vides an el­e­gant lay­out de­signed in homage to Bringhurst’s "The Ele­ments of Ty­po­graphic Style".
