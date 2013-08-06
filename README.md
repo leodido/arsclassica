@@ -1,10 +1,10 @@
 # ArsClassica
 
-![latexlogo](http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg) thesis template based on *ArsClassica* and *ClassicThesis* packages with custom and useful additions. 
+<img src="http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg" alt="LaTeX logo" style="width: 50px;"/> thesis template based on *ArsClassica* and *ClassicThesis* packages with custom and useful additions. 
 
 ## Prerequisites
 
-- A complete <img src="http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg" alt="LaTeX logo" style="width: 150px;"/> distribution (e.g., texlive).
+- A complete <img src="http://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg" alt="LaTeX logo" style="width: 50px;"/> distribution (e.g., texlive).
 
 - The `make` build automation utility.
 
