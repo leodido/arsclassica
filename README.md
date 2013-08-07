@@ -101,6 +101,12 @@ Put the project file inside the folder, open Sublime Text and compile it (`CTRL 
 
 Note that this actions is equivalent to `make -s tex`. Therefore, before running it, you need to do a complete compilation (i.e., `make -s thesis`).
 
+## Title page
+
+An alternative and simple frontispiece is provided. See file `frontispiece_simple.tex` in the `frontmatter` directory.
+
+How to use: substitute it to `frontispiece.tex` and run `make -s simplethesis`.
+
 ## Credits
 
 * [Lorenzo Pantieri](http://www.lorenzopantieri.net),
