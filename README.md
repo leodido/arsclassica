@@ -14,11 +14,11 @@ This template provides the following **enhancements**:
 
     - Support multi-line titles
 
-    - Alternative chapter numbers style
+    - Two different styles for chapter numbers
 
     - Integrated **analytical index**
 
-    - Custom command to indexing terms (e.g., `\keywordsub[category]{term}`)
+    - Custom commands to indexing terms (e.g., `\keywordsub[category]{term}`)
 
     - Support for **acronyms**
 
@@ -28,7 +28,7 @@ This template provides the following **enhancements**:
 
     - Predefined **listings environment**
 
-    - Predefined pseudo-code listings language
+    - Predefined pseudo-code language and style for listings
 
     - Various utility commands (e.g., `\lwcase` to lowercase the first letter of the word that follows it)
 
