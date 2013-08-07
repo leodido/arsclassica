@@ -7,17 +7,20 @@
 % Frontispiece
 %*******************************************************
 \begin{frontespizio}
-\Preambolo{\usepackage{iwona}}
+	\Preambolo{
+		\usepackage{iwona}
+		\input{info}
+	}
 
-\Universita{Place}
-\Logo{images/sigillo}
-\Facolta{Mathematics}
-\Corso{Computer Science}
-\Annoaccademico{2012--2013}
-\Titoletto{M.Sc Degree}
-\Titolo{Thesis title}
-\Sottotitolo{Thesis subtitle}
-\Candidato[744739]{Leonardo~Di~Donato}
-\Relatore{Prof.~N.~Surname}
-\Correlatore{Dott.~Name~Surname}
+	\Universita{\myuni{}}
+	\Logo{images/sigillo}
+	\Facolta{\myfaculty{}}
+	\Corso{\mycourse{}}
+	\Annoaccademico{\myaa{}}
+	\Titoletto{\mydegree{}}
+	\Titolo{\mytitle{}}
+	\Sottotitolo{\mysubtitle{}}
+	\Candidato[\myid{}]{\myname{}}
+	\Relatore{\myprof{}}
+	\Correlatore{\mycorrelator{}}
 \end{frontespizio}
