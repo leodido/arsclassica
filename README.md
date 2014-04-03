@@ -1,4 +1,5 @@
-# ArsClassica
+ArsClassica [![Analytics](https://ga-beacon.appspot.com/UA-49657176-1/arsclassica)](https://github.com/igrigorik/ga-beacon)
+==============
 
 `LaTeX` thesis template based on *ArsClassica* (version [4.0.3](http://www.ctan.org/pkg/arsclassica)) and *ClassicThesis* (version [4.1](http://www.ctan.org/pkg/classicthesis)) packages with custom and useful additions. 
 
